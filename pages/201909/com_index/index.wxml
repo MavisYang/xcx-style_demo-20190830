@@ -1,0 +1,25 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: miaomiao.yang
+ * @Date: 2019-09-19 11:19:16
+ * @LastEditTime: 2019-09-20 13:56:11
+ * @LastEditors: Please set LastEditors
+ -->
+<!--pages/201909/com_index/index.wxml-->
+<stopwatch id='stopwatch' class='stopwatch'/>
+
+<button class="btn" wx:if="{{!started}}" bindtap="handle_start">开始计时</button>
+<button class="btn" wx:if="{{started}}" bindtap="handle_stop">停止计时</button>
+
+<button class="default" size="default" type="default" bindtap='saveFile'>
+  选择图片wx.saveFile
+</button>
+<image class="" src="{{saveFilePath}}" mode="widthFix" ></image>
+
+<button class="default" size="default" type="default" bindtap='getSavedFileList'>
+  获取保存到本地的文件
+</button>
+
+
+
+

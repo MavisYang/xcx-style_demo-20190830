@@ -12,8 +12,20 @@
     "pages/aTestDemo/uploadPic/index",
     "pages/aTestDemo/downPic/index",
     "pages/aTestDemo/webview/index",
-    "pages/aTestDemo/maps/map"
+    "pages/aTestDemo/maps/map",
+    "pages/201909/com_index/index",
+    "pages/201909/wxs/index/index",
+    "pages/201909/wxs/movable/movable",
+    "pages/201909/wxs/nearby/nearby",
+    "pages/201909/wxs/sidebar/sidebar",
+    "pages/201909/wxs/stick-top/stick-top",
+    "component/cu-custom/index"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -47,5 +59,20 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/cat/index"
+      ]
+    },
+    {
+      "root": "packageB",
+      "name": "pack2",
+      "pages": [
+        "pages/apple/index"
+      ]
+    }
+  ]
 }

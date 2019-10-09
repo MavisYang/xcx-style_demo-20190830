@@ -97,6 +97,17 @@ Page({
   onShareAppMessage: function () {
 
   },
+  onTabItemTap: function (item){
+    console.log('onTabItemTap',item)
+    //返回结果
+    console.log(item.index)
+    console.log(item.pagePath)
+    console.log(item.text)
+    wx.showModal({
+      title: '温馨提示',
+      content: '需要授权',
+    })
+  },
 
   orderList: function (e) {
     let self = this;

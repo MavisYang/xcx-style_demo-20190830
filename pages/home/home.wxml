@@ -62,16 +62,23 @@
         <button size='mini' type="primary" bindtap='paySubmitBox'>微信支付</button>
       </view>
       <view>
-        <button size='mini' type="primary" 
-        open-type="launchApp" app-parameter="wechat" binderror="launchAppError">打开APP</button>
+        <button size='mini' type="primary"  open-type="launchApp" app-parameter="wechat" binderror="launchAppError">打开APP</button>
+         <button size='mini' type="primary"  bindtap="chooseMessageFile">chooseMessageFile</button>
+         <!-- <live-pusher url="{{livePlayer}}" mode="RTC"  bindstatechange="statechange" style="width: 300px; height: 225px;" /> -->
       </view>
+
+
+
     </view>
     <!-- testwrapper end -->
   </view>
+  <input class="ipt" bindfocus="focus" placeholder="请输入文字"></input>
   <view class="go-top" bindtap="goTop" wx:if="{{showGoTop}}">
     <image src="/images/goTop.png"></image>
   </view>
   <view>template：</view>
   <template is='itemList' data='{{listItem}}'></template>
+
+  <editor  ></editor>
 </scroll-view>
 

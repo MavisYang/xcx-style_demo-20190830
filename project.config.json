@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
 	"appid": "wx50d128239e413fe0",
-	"projectname": "demo0125",
+	"projectname": "style_demo",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -81,6 +81,20 @@
 					"name": "address",
 					"pathName": "pages/aTestDemo/address/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "com_index",
+					"pathName": "pages/201909/com_index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "packageA/pages/cat/index",
+					"pathName": "packageA/pages/cat/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

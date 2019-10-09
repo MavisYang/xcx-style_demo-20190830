@@ -43,6 +43,31 @@ Page({
      * 生命周期函数--监听页面加载
      */
   onLoad: function (options) {
+    // 自动打开调试
+    // wx.setEnableDebug({
+    //   enableDebug: true 
+    // })
+    // // 关闭调试
+    // wx.setEnableDebug({
+    //   enableDebug: false
+    // })
+
+    //获取小程序启动时的参数。
+    wx.getLaunchOptionsSync()
+    console.log('getLaunchOptionsSync', wx.getLaunchOptionsSync())
+    //获取系统信息
+    wx.getSystemInfo({
+      success(res) {
+        console.log('getSystemInfo',res)
+      }
+    })
+
+    // wx.onPageNotFound({
+    //   success(res) {
+    //     console.log('onPageNotFound',res)
+    //   }
+    // })
+
     let _this = this;
     // 设置导航条样式动画
     util.setNavigation()
@@ -58,11 +83,11 @@ Page({
       this.getViewPosition(viewId)
     }
     // 授权
-    wx.getSetting({
-      success: function (res) {
-        console.log(res.authSetting, 'authSetting');
-      }
-    })
+    // wx.getSetting({
+    //   success: function (res) {
+    //     console.log(res.authSetting, 'authSetting');
+    //   }
+    // })
     // 显示当前页面的转发按钮
     // wx.showShareMenu({
     //   withShareTicket:true
@@ -72,14 +97,171 @@ Page({
 
     var scene = decodeURIComponent(options.scene)
     console.log('scene', scene);
-    // 调用本地地址
-    // wx.chooseAddress({
-    //   success: function (res) {
-    //     console.log('chooseAddress',res);
 
-    //   }
+    //this.handleShow()
+    // this.setNavigation()
+    // this.setTabbar()
+
+
+    //对于不需要在一个同步流程内完成的逻辑，可以使用此接口延迟到下一个时间片再执行（类似于 setTimeout）
+    wx.nextTick(()=>{
+      console.log('nextTick')
+    })
+    
+    let menu = wx.getMenuButtonBoundingClientRect()
+
+    console.log(menu,'获取菜单按钮（右上角胶囊按钮）的布局位置信息')
+
+    //this.location()
+
+    // wx.addPhoneContact({
+    //   firstName: '',
+    // })
+  },
+  location:function(){
+    wx.chooseLocation({
+      success: function(res) {
+        console.log(res, 'chooseLocation')
+      },
+    })
+    wx.getLocation({
+      success: function(res) {
+        console.log(res,'getLocation')
+      },
+    })
+  },
+  chooseMessageFile:function(){
+    let that = this
+    wx.chooseMessageFile({
+      count: 10,
+      type: "all",//
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        console.log(res, 'chooseMessageFile')
+        that.setData({
+          livePlayer: res.tempFiles[0].path
+        })
+
+      }
+    })
+  },
+  setTabbar:function(){
+    //显示 tabBar 某一项的右上角的红点
+    // wx.showTabBarRedDot({
+    //   index:1
+    // })
+    //为 tabBar 某一项的右上角添加文本
+    wx.setTabBarBadge({
+      index: 1,
+      text: '2',
+    })
+    //动态设置 tabBar 的整体样式
+    // wx.setTabBarStyle({
+    //   color: '#FF0000',
+    //   selectedColor: '#00FF00',
+    //   backgroundColor: '#0000FF',
+    //   borderStyle: 'white'
     // })
 
+    //动态设置 tabBar 某一项的内容
+    // wx.setTabBarItem({
+    //   index: 0,
+    //   text:'',
+    //   iconPath:'',
+    //   selectedIconPath:''
+    // })
+  },
+  setNavigation:function(){
+
+    //在当前页面显示导航条加载动画
+    wx.showNavigationBarLoading({
+      success(res) {
+        console.log(res)
+        setTimeout(() => {
+          wx.hideNavigationBarLoading()
+        }, 1000)
+      }
+    })
+
+    // wx.setNavigationBarColor({
+    //   frontColor: '#ffffff', //前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000,
+    //   backgroundColor: '#FF5B8C', //背景颜色值，有效值为十六进制颜色,
+    //   animation:true
+    // })
+
+    wx.setNavigationBarTitle({
+      title: 'style_demo',
+    })
+
+    // wx.setBackgroundColor({
+    //   backgroundColor:'#e6e6e6',
+    //   backgroundColorTop: '#000000', // 顶部窗口的背景色为白色
+    //   backgroundColorBottom: '#ffffff', // 底部窗口的背景色为白色
+    // })
+
+  },
+  handleShow:function(){
+    wx.showToast({
+      title: '成功',
+      icon:'none',//默认success
+      duration: 2000,
+      image:'/images/ic_tab_home_pre.png',
+      mask: true,//是否显示透明蒙层，防止触摸穿透
+      success(res){},
+      fail(req){},
+      complete(com){}
+    })
+
+    //有确定，取消按钮
+    // wx.showModal({
+    //   title: '温馨提示',
+    //   content: '提示内容',
+    //   //showCancel: false,//是否显示取消按钮
+    //   cancelText:'取消吧',
+    //   cancelColor:'#e4e4e4',
+    //   confirmText:'知道啦',
+    //   confirmColor:'#FF5B8C',
+    //   success(res) { 
+    //     console.log(res)
+    //     if (res.confirm){//确定按钮
+    //     } else if (res.cancel){//取消按钮
+    //     }
+    //   },
+    //   fail(req){},
+    //   complete(com){}
+    // })
+
+    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
+
+    // setTimeout(()=>{
+    //   wx.hideLoading()
+    // },2000)
+
+    // wx.showActionSheet({
+    //   itemList: ['A', 'B', 'C'],
+    //   success(res) {
+    //     console.log(res.tapIndex)
+    //   },
+    //   fail(res) {
+    //     console.log(res.errMsg)
+    //   }
+    // })
+  },
+  focus:function(){
+    wx.getSelectedTextRange({
+      success(res){
+
+      },
+      fail(req){
+
+      },
+      complete(res) {
+        console.log('getSelectedTextRange res', res)
+      }
+    })
   },
   // 选择上传图片
   chooseImage: function () {
