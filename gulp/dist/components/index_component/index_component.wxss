@@ -1,0 +1,16 @@
+.components-demo {
+  padding: 20rpx;
+  border: 2rpx solid #999;
+  margin-top: 20rpx;
+}
+.components-demo .text {
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.components-demo .btn {
+  padding: 0.5em 1em;
+  margin: 0 auto 20rpx;
+  text-align: center;
+  background: #eaeaea;
+  color: #999;
+}
